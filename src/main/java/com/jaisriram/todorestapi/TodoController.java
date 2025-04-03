@@ -22,7 +22,7 @@ public class TodoController {
         this.todoService = todoService;
     }
 
-    @GetMapping("")
+    @GetMapping()
     public ResponseEntity<Todo> getMethodName(@RequestParam long id) {
         Todo todo = todoService.getSingleTodo(id);
         return ResponseEntity.status(HttpStatus.OK).body(todo);
@@ -39,16 +39,15 @@ public class TodoController {
         Todo createdTodo = todoService.createOrUpdateTodo(todo);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdTodo);
     }
-    
 
-    @PutMapping
+    @PutMapping()
     public ResponseEntity<Todo> UpdateTodo(Todo todo) {
 
         Todo updatedTodo = todoService.createOrUpdateTodo(todo);
         return ResponseEntity.status(HttpStatus.OK).body(updatedTodo);
     }
 
-    @DeleteMapping
+    @DeleteMapping()
     public ResponseEntity<String> DeleteTodo(long id) {
         todoService.deleteTodo(id);
         return ResponseEntity.status(HttpStatus.OK).body(new String("Todo with Id " + id + " is Deleted"));
